@@ -45,7 +45,6 @@
     <Compile Include="Exceptions\TaxBracketNotFoundException.cs" />
     <Compile Include="Interfaces\IDataImporter.cs" />
     <Compile Include="Interfaces\IPayCalculator.cs" />
-    <Compile Include="Interfaces\ITaxBracket.cs" />
     <Compile Include="Interfaces\ITaxTable.cs" />
     <Compile Include="Interfaces\IPayslipGenerator.cs" />
     <Compile Include="PayCalculator.cs" />

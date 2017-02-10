@@ -22,7 +22,7 @@ namespace myob.tests
                 Salary = 120000,
                 FirstName = "John",
                 LastName = "Smith",
-                StartDate = "01 March",
+                PayPeriod = "01 March",
                 SuperRate = 9
             };
 

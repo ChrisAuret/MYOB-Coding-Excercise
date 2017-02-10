@@ -38,7 +38,7 @@ namespace myob.domain
                             LastName = values[1],
                             Salary = Convert.ToDecimal(values[2]),
                             SuperRate = Convert.ToDecimal(Regex.Replace(values[3], @"[^0-9]+", "")),
-                            StartDate = values[4],
+                            PayPeriod = values[4],
                         };
 
                         employees.Add(employeeDetail);
