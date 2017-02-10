@@ -6,6 +6,6 @@
         public string LastName { get; set; }
         public decimal Salary { get; set; }
         public decimal SuperRate { get; set; }
-        public string StartDate { get; set; }
+        public string PayPeriod { get; set; }
     }
 }

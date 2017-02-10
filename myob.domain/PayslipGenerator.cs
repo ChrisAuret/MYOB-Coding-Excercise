@@ -28,9 +28,10 @@ namespace myob.domain
             var grossIncome = _payCalculator.CalculateGrossIncome(employee.Salary);
             var netIncome = _payCalculator.CalculateNetIncome(grossIncome, incomeTax);
             var super = _payCalculator.CalculateSuper(grossIncome, employee.SuperRate);
+            var payPeriod = employee.PayPeriod;
 
             //  Name, payPeriod, grossIncome, incomeTax, netIncome, super
-            var payslip = $"{employeeName} , {"01 March - 31 March"} , {grossIncome}, {incomeTax}, {netIncome}, {super}";
+            var payslip = $"{employeeName} , {payPeriod} , {grossIncome}, {incomeTax}, {netIncome}, {super}";
 
             return payslip;
         }

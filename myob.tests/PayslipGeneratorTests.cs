@@ -63,5 +63,20 @@ namespace myob.tests
                 Times.Once()
             );
         }
+
+        public void GeneratePayslip_creates_valid_payslip()
+        {
+            var payCalculator = new Mock<IPayCalculator>();
+            payCalculator.Setup(x => x.CalculateIncomeTax(It.IsAny<decimal>(), It.IsAny<ITaxTable>()));
+            payCalculator.Setup(x => x.CalculateGrossIncome(It.IsAny<decimal>()));
+            payCalculator.Setup(x => x.CalculateNetIncome(It.IsAny<decimal>(), It.IsAny<decimal>()));
+            payCalculator.Setup(x => x.CalculateSuper(It.IsAny<decimal>(), It.IsAny<decimal>()));
+
+            var taxTable = new Mock<ITaxTable>();
+            taxTable.Setup(x => x.GetTaxBracket(It.IsAny<decimal>()))
+                .Returns(new TaxTable().GetTaxBracket(_employee.Salary));
+
+            var payslipGenerator = new PayslipGenerator(payCalculator.Object, taxTable.Object);
+        }
     }
 }

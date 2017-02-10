@@ -11,21 +11,25 @@ namespace myob.domain
 {
     public class DataImporter : IDataImporter
     {
+        /// <summary>
+        /// Import records from CSV file
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <returns></returns>
         public List<EmployeeDetail> Import(string filepath)
         {
+            var employees = new List<EmployeeDetail>();
+            var failures = new List<string>();
+
             using (var fs = File.OpenRead(filepath))
             using (var reader = new StreamReader(fs))
             {
-                var employees = new List<EmployeeDetail>();
-                var failures = new List<EmployeeDetail>();
-
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
                     if (line == null) continue;
                     var values = line.Split(',');
 
-                    //var super = String(input.Where(Char.IsDigit).ToArray());
                     try
                     {
                         var employeeDetail = new EmployeeDetail
@@ -41,12 +45,17 @@ namespace myob.domain
                     }
                     catch (Exception ex)
                     {
-
+                        failures.Add(line + " | ERROR: " + ex.Message);
                     }
                 }
-
-                return employees;
             }
+
+            if (failures.Any())
+            {
+                File.WriteAllLines("failures.csv", failures);
+            }
+
+            return employees;
         }
     }
 }

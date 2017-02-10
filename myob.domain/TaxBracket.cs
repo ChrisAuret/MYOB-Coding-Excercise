@@ -1,5 +1,8 @@
 ﻿namespace myob.domain
 {
+    /// <summary>
+    /// Represent a tax bracket object
+    /// </summary>
     public class TaxBracket
     {
         public TaxBracket(decimal minimum, decimal maximum, decimal mandatoryTax, decimal rate)
