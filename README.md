@@ -1,3 +1,4 @@
+
 # MYOB Coding Excercise
 
 ## Running the code
@@ -29,9 +30,10 @@ Right-click "myob.tests" project in solution explorer and select "Run All tests"
 - Each record in the input file has been validated already
 - Database is not needed as will process all recoreds in memory
 - **I'm not sure about the "Pay Period" field**. Im assuming its static text in the form of:
-   ```sh
+   ```
     {1st day of Month, Month} - {Last day of Month, Month}
     ```
     **The intructions say it is a calculated field but the test data it is just static text?**
+    
 ## Decisions
 - I decided that a user interface is not important for this task. I've focused on the domain layer and not on presentaion aspects.
