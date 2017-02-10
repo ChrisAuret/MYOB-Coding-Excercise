@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using myob.domain.Interfaces;
 
-namespace myob
+namespace myob.domain
 {
-    public class DataLoader :IDataLoader
+    public class DataImporter : IDataImporter
     {
-        public List<EmployeeDetail> Load(string filepath)
+        public List<EmployeeDetail> Import(string filepath)
         {
             using (var fs = File.OpenRead(filepath))
             using (var reader = new StreamReader(fs))
@@ -41,17 +41,12 @@ namespace myob
                     }
                     catch (Exception ex)
                     {
-                        
+
                     }
                 }
 
                 return employees;
             }
         }
-    }
-
-    public interface IDataLoader
-    {
-        List<EmployeeDetail> Load(string filepath);
     }
 }

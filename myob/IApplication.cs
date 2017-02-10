@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace myob
 {
-    public class PaySlip
+    public interface IApplication
     {
+        void Run();
     }
 }
