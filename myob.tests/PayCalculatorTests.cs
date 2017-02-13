@@ -14,7 +14,6 @@ namespace myob.tests
             _payCalculator = new PayCalculator();
         }
 
-        [Test]
         [TestCase(10000, 833)]  // Down
         [TestCase(12000, 1000)]
         [TestCase(36000, 3000)]
@@ -28,9 +27,8 @@ namespace myob.tests
             Assert.AreEqual(expected, output);
         }
 
-        [Test]
         [TestCase(0, 0)]
-        [TestCase(18000, 0)]
+        [TestCase(18000d, 0)]
         [TestCase(60050, 922)]
         public void CalculateIncomeTax_should_return_correct_amount(decimal salary, decimal expected)
         {
@@ -45,7 +43,6 @@ namespace myob.tests
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
         [TestCase(0, 0, 0)]
         [TestCase(60050, 922, 59128)]
         public void CalculateNetIncome_should_return_correct_amount(decimal grossSalary, decimal incomeTax, decimal expected)
@@ -57,7 +54,6 @@ namespace myob.tests
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
         [TestCase(5000, 9, 450)]
         [TestCase(5000, 10, 500)]
         [TestCase(5002, 11, 550)] // Round Down
