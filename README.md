@@ -16,7 +16,7 @@ You will need
 
 ## To Run Tests
 
-Right-click "myob.tests" project in solution explorer and select "Run All tests"
+Double-click "runtests.bat" from the file explorer
 
 ## To Run Console Application
 -   Make sure to paste in test data into "input.csv"
