@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs" />
-    <None Include="failures.csv" />
+    <None Include="failures.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Compile Include="ContainerConfig.cs" />
     <Compile Include="IApplication.cs" />
     <Compile Include="Program.cs" />
