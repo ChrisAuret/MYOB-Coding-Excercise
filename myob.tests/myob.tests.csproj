@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataImporterTests.cs" />
     <Compile Include="PayCalculatorTests.cs" />
     <Compile Include="PayslipGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +66,11 @@
       <Project>{8630b5cf-3cdb-404b-93cc-564217fcaca7}</Project>
       <Name>myob.domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="testInput.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
