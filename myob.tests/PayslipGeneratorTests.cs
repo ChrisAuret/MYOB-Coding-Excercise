@@ -1,4 +1,5 @@
-﻿using myob.domain;
+﻿using System.Linq;
+using myob.domain;
 using myob.domain.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -8,25 +9,19 @@ namespace myob.tests
     [TestFixture]
     public class PayslipGeneratorTests
     {
-        private PayCalculator _payCalculator;
         private EmployeeDetail _employee;
-        private ITaxTable _taxTable;
 
         [OneTimeSetUp]
         public void Setup()
         {
-            _payCalculator = new PayCalculator();
-
             _employee = new EmployeeDetail
             {
                 Salary = 120000,
                 FirstName = "John",
                 LastName = "Smith",
-                PayPeriod = "01 March",
+                PayPeriod = "01 March - 31 March",
                 SuperRate = 9
             };
-
-            _taxTable = new TaxTable();
         }
 
         [Test]
@@ -64,19 +59,37 @@ namespace myob.tests
             );
         }
 
+        [Test]
         public void GeneratePayslip_creates_valid_payslip()
         {
-            var payCalculator = new Mock<IPayCalculator>();
-            payCalculator.Setup(x => x.CalculateIncomeTax(It.IsAny<decimal>(), It.IsAny<ITaxTable>()));
-            payCalculator.Setup(x => x.CalculateGrossIncome(It.IsAny<decimal>()));
-            payCalculator.Setup(x => x.CalculateNetIncome(It.IsAny<decimal>(), It.IsAny<decimal>()));
-            payCalculator.Setup(x => x.CalculateSuper(It.IsAny<decimal>(), It.IsAny<decimal>()));
+            // Arrange
+            var payCalculator = new PayCalculator();
+            var taxTable = new TaxTable();
 
-            var taxTable = new Mock<ITaxTable>();
-            taxTable.Setup(x => x.GetTaxBracket(It.IsAny<decimal>()))
-                .Returns(new TaxTable().GetTaxBracket(_employee.Salary));
+            // Act
+            var payslipGenerator = new PayslipGenerator(payCalculator, taxTable);
+            var payslip = payslipGenerator.GeneratePayslip(_employee)
+                .Split(',')
+                .Select(x => x.Trim())
+                .ToArray();
 
-            var payslipGenerator = new PayslipGenerator(payCalculator.Object, taxTable.Object);
+            // Name
+            Assert.AreEqual(payslip[0], "John Smith");
+
+            // Pay period
+            Assert.AreEqual(payslip[1].Trim(), "01 March - 31 March");
+
+            // Gross income
+            Assert.AreEqual(payslip[2], "10000");
+
+            // Income tax
+            Assert.AreEqual(payslip[3], "2696");
+
+            // Net income
+            Assert.AreEqual(payslip[4], "7304");
+
+            // Super
+            Assert.AreEqual(payslip[5], "900");
         }
     }
 }

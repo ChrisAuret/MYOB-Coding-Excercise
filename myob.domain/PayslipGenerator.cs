@@ -17,7 +17,7 @@ namespace myob.domain
         }
 
         /// <summary>
-        /// Combine salary calculations and produce a Payslip for a Employee
+        /// Combine salary calculations and produce a Payslip for an Employee
         /// </summary>
         /// <param name="employee"></param>
         public string GeneratePayslip(EmployeeDetail employee)
@@ -31,7 +31,7 @@ namespace myob.domain
             var payPeriod = employee.PayPeriod;
 
             //  Name, payPeriod, grossIncome, incomeTax, netIncome, super
-            var payslip = $"{employeeName} , {payPeriod} , {grossIncome}, {incomeTax}, {netIncome}, {super}";
+            var payslip = $"{employeeName}, {payPeriod}, {grossIncome}, {incomeTax}, {netIncome}, {super}";
 
             return payslip;
         }
