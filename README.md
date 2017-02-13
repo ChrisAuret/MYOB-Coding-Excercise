@@ -4,6 +4,7 @@
 ## Running the code
 
 You will need
+- Git
 - Visual Studio 2015
 
 1. Clone the repo from [GitHub](https://github.com/ChrisAuret/MYOB-Coding-Excercise)
@@ -34,4 +35,4 @@ Double-click "runtests.bat" from the file explorer
     **The intructions say it is a calculated field but the test data it is just static text?**
     
 ## Decisions
-- I decided that a user interface is not important for this task. I've focused on the domain layer and not on presentaion aspects.
+- I decided that a user interface is not important for this task. I've focused on the domain layer and unit tests and not on presentaion aspects.
