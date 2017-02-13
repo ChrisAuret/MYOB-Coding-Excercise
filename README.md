@@ -25,6 +25,7 @@ Double-click "runtests.bat" from the file explorer
 -   Just hit F5 in Visual Studio and console app will run
 
 ## Assumptions
+- UTF-8 input file
 - File contains up to 50000 records
 - Each record in the input file has been validated already
 - Database is not needed as will process all recoreds in memory
