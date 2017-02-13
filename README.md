@@ -7,7 +7,7 @@ You will need
 - Visual Studio 2015
 
 1. Clone the repo from [GitHub](https://github.com/ChrisAuret/MYOB-Coding-Excercise)
-    ``'
+    ```
     git clone git@github.com:ChrisAuret/MYOB-Coding-Excercise.git
     ```
 2. Open the solution in Visual Studio 2015
